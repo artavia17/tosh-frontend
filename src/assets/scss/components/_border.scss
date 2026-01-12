@@ -1,0 +1,9 @@
+.decorative-border{
+  height: rem(90px);
+  width: 100%;
+  display: block;
+
+  @include bp(laptop) {
+    height: rem(100px);
+  }
+}

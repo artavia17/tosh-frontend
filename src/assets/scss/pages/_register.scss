@@ -1,0 +1,42 @@
+.register-page{
+    .character-image{
+        position: absolute;
+        right: 0px;
+        width: 75%;
+        z-index: -1;
+
+        @include bp(laptop) {
+            width: 40%;
+            transform: translateY(5%);
+        }
+    }
+
+    .chiky-logo{
+        display: block;
+        padding: rem(75px) 0 0 0;
+        width: rem(100px);
+        margin-bottom: rem(30px);
+
+        @include bp(laptop) {
+            width: rem(150px);
+        }
+    }
+
+    form{
+        @include bp(laptop) {
+            max-width: 50%;
+        }
+    }
+
+    #communication-channels{
+        border: 2px solid $text-color;
+        border-radius: rem(10px);
+        padding: rem(15px);
+        margin-bottom: rem(30px);
+
+        #communication-channels-legend{
+            font-family: $font_bold;
+            margin-bottom: rem(15px);
+        }
+    }
+}

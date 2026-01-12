@@ -1,0 +1,144 @@
+.error-message {
+    display: block;
+    color: #ff5757 !important;
+}
+
+form.normal {
+    width: 100%;
+
+  .form-row{
+    @include bp(laptop) {
+      display: flex;
+      flex-flow: row;
+      gap: rem(20px);
+
+      .form-field{
+        margin: 0;
+      }
+    }
+  }
+
+  .form-field,
+  .form-row {
+    margin-bottom: rem(16px);
+    width: 100%;
+
+    label {
+      color: $text-color;
+      display: block;
+      padding: 0 rem(12px);
+      margin-bottom: rem(5px);
+      font-family: $font-bold;
+      font-size: rem(14px);
+    }
+
+    input,
+    select,
+    textarea {
+      width: calc(100% - calc(rem(24px) + 2px));
+      border: 1px solid $text-menu-color;
+      background-color: transparent;
+      backdrop-filter: blur(5px);
+      padding: rem(15px) rem(12px);
+      border-radius: rem(10px);
+      color: $text-color;
+      font-family: $font-medium;
+      font-size: rem(14px);
+
+      @include bp(laptop) {
+        border: 2px solid $background-color;
+      }
+
+      &::placeholder {
+        color: $text-color;
+      }
+    }
+
+    select{
+      cursor: pointer;
+
+      // Asegurar que las opciones tengan buen contraste en todos los navegadores
+      option {
+        background-color: #fff;
+        color: #000;
+        padding: rem(8px);
+      }
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .error-message{
+        color: $text-color;
+        font-family: $font-medium;
+        font-size: rem(14px);
+        margin-top: rem(10px);
+        display: block;
+        padding: 0 rem(12px);
+    }
+  }
+
+  fieldset {
+    border: none;
+    margin-top: rem(30px);
+
+    .form-checkbox{
+        margin-bottom: rem(20px);
+        color: $text-color;
+        font-family: $font-medium;
+        font-size: rem(14px);
+        text-wrap: balance;
+        cursor: pointer;
+        user-select: none;
+
+        &:last-of-type{
+          margin-bottom: 0;
+        }
+
+        span{
+          cursor: pointer;
+        }
+
+        a{
+            color: $text-color;
+        }
+
+        input{
+            margin-right: rem(10px);
+            cursor: pointer;
+        }
+    }
+  }
+
+  input[type="submit"],
+  button{
+    width: 100%;
+    margin-top: rem(30px);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $text-color;
+      color: $background-color;
+    }
+
+    &.btn-code{
+      &:hover{
+        color: $text-color;
+        background-color: $background-color;
+        border: 1px solid $text-color;
+      }
+    }
+  }
+}
+
+
+.register-form-section{
+  @include bp(laptop) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+  }
+}

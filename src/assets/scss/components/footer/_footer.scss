@@ -1,0 +1,94 @@
+footer{
+    @include bp(laptop) {
+        padding-top: rem(85px);
+    }
+
+    .footer-reglamento-nav{
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $background-color;
+            padding: rem(10px) rem(10px) rem(10px) rem(20px);
+            border-radius: rem(25px);
+
+            font-size: rem(15px);
+            text-decoration: none;
+            font-family: $font_bold;
+            color: $text-color;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: scale 0.2s ease-in-out;
+
+            &:hover {
+                scale: 1.01;
+            }
+
+            img{
+                width: 30px;
+            }
+        }
+    }
+
+    .footer-info-section{
+        margin: rem(40px) 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        .footer-logo-link{
+            img{
+                width: rem(150px);
+                margin-bottom: rem(10px);
+            }
+        }
+
+        .footer-secondary-nav{
+            ul{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: rem(15px);
+
+                li{
+                    text-align: center;
+                    list-style: none;
+
+                    &:nth-of-type(1){
+                        grid-column: 1 / span 2;
+                    }
+
+                    &:nth-of-type(2){
+                        grid-column: 1 / span 2;
+                    }
+
+                    &:nth-of-type(3){
+                        a{
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
+                        }
+                    }
+
+                    &:nth-of-type(4){
+                        a{
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                        }
+                    }
+
+                    a{
+                        font-size: rem(15px);
+                        text-decoration: none;
+                        font-family: $font_bold;
+                        color: $text-color;
+
+                        img{
+                            width: rem(40px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

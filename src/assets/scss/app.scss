@@ -1,0 +1,213 @@
+@import "./var";
+
+// Components
+@import "./components/background";
+@import "./components/nav/nav";
+@import "./components/nav/cookies";
+@import "./components/buttons";
+@import "./components/text";
+@import "./components/modal";
+@import "./components/border";
+@import "./components/footer/footer";
+@import "./components/top-space";
+@import "./components/form";
+@import "./components/have-account";
+
+// Page
+@import "./pages/home";
+@import "./pages/register";
+@import "./pages/winners";
+@import "./pages/profile";
+@import "./pages/awards";
+@import "./pages/promotional-code-page";
+
+*,
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  // scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+/* WCAG 2.1 - Clase de utilidad para accesibilidad */
+/* Oculta visualmente el contenido pero lo mantiene accesible para lectores de pantalla */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Variante enfocable - Útil para skip links */
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: "absolute";
+  left: "-9999px";
+  z-index: 999;
+  padding: "1em";
+  background-color: "#000";
+  color: "#fff";
+  text-decoration: "none";
+}
+
+.container {
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.modal-line {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.388);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    padding: 10px;
+    max-width: 600px;
+
+    img {
+      width: 100%;
+      border-radius: rem(20px);
+    }
+  }
+}
+
+.modal-line-dynamic {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.388);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    padding: 25px;
+    max-width: 600px;
+    background-color: white;
+    border-radius: rem(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+    h2 {
+      text-align: center;
+      color: #44107d;
+      font-size: rem(25px);
+      margin-bottom: rem(15px);
+      text-wrap: balance;
+
+      @include bp(laptop) {
+        font-size: rem(30px);
+      }
+    }
+
+    p {
+      text-align: center;
+      font-size: rem(15px);
+      text-wrap: balance;
+      color: #44107d;
+      margin-bottom: rem(25px);
+      text-transform: uppercase;
+
+      @include bp(laptop) {
+        font-size: rem(18px);
+      }
+    }
+
+    img {
+      width: 100%;
+      margin-top: rem(15px);
+      max-width: 300px;
+    }
+  }
+}
+
+.responsive-box {
+  max-width: calc(100% - 30px);
+  margin: auto;
+
+  @include bp(tablet) {
+    max-width: 675px;
+  }
+
+  @include bp(tabletMD) {
+    max-width: 850px;
+  }
+
+  @include bp(laptop) {
+    max-width: 1000px;
+  }
+
+  @include bp(laptopBIG) {
+    max-width: 1200px;
+  }
+
+  @include bp(escritorio) {
+    max-width: 1300px;
+  }
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
+// Responsive Iframe
+.desktop{
+  display: none;
+  @include bp(laptop){
+    display: block;
+  }
+}
+
+.mobile{
+  display: block;
+  @include bp(laptop){
+    display: none;
+  }
+}
+
+#desc-identification-number{
+  text-align: left;
+  margin-top: rem(10px);
+  padding: 0 0.75rem;
+}
+
+.change-country-section{
+  margin-bottom: rem(40px);
+  button{
+    min-width: 200px;
+  }
+}

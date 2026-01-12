@@ -1,0 +1,61 @@
+.profile-page {
+    margin-bottom: rem(60px);
+
+    .codes{
+        margin-top: rem(35px);
+
+        table{
+            width: 100%;
+            border-collapse: collapse; 
+            margin-bottom: rem(20px);
+
+            button{
+                margin-top: 0px;
+                cursor: pointer;
+            }
+
+            .invoice-image-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img{
+                    max-width: 400px;
+                }
+            }
+
+            thead{
+                display: none;
+            }
+
+            tbody{
+
+                td{
+                    padding: rem(10px);
+                    border-bottom: 1px solid $text-color;
+
+                    .number{
+                        p{
+                            margin-right: rem(15px);
+                        }
+                    }
+
+                    code{
+                        margin-left: rem(10px);
+                    }
+                }
+            }
+        }
+
+        button{
+            width: 100%;
+
+            @include bp(laptop){
+                width: auto;
+                margin: auto;
+                margin-top: rem(40px);
+                padding: rem(13px) rem(30px) rem(10px) rem(30px);
+            }
+        }
+    }
+}

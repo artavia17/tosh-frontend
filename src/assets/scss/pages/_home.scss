@@ -1,0 +1,234 @@
+header.home {
+  .hero-section {
+    img {
+      width: 100%;
+    }
+  }
+
+  .cta-buttons {
+    margin-top: rem(25px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: rem(10px);
+
+    @include bp(laptop) {
+      max-width: 550px;
+    }
+  }
+
+  .header-col{
+    @include bp(laptop) {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .desktop{
+      width: 75%;
+    }
+
+    .reward-section{
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+
+      button,
+      a{
+        width: 200px;
+      }
+    }
+  }
+}
+
+#main-content {
+  .how-to-participate-section {
+    // position: relative;
+
+    @include bp(laptop) {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+    // Imágenes decorativas
+    .decorative-image {
+      display: none;
+
+      @include bp(laptop) {
+        display: block;
+        position: absolute;
+        width: 200px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &.banano-image {
+        @include bp(laptop) {
+          left: 0;
+          top: auto;
+          transform: translateY(40px);
+        }
+      }
+
+      &.barra-image {
+        @include bp(laptop) {
+          right: 0;
+          top: auto;
+          transform: translateY(40px);
+        }
+      }
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(3, calc(33.33% - rem(20px)));
+      gap: rem(15px);
+      justify-items: center;
+
+      @include bp(laptop) {
+        margin-top: rem(25px);
+      }
+
+      li {
+        list-style: none;
+        margin-top: rem(15px);
+
+        .step-number {
+          display: flex;
+          justify-content: center;
+
+          div {
+            background-color: $button-color;
+            width: rem(50px);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: rem(15px);
+
+            @include bp(laptop) {
+              width: rem(75px);
+            }
+
+            h2 {
+              color: $text-menu-color;
+              transform: translateY(3px);
+            }
+          }
+        }
+      }
+      p,
+      strong {
+        font-size: rem(10px);
+        text-align: center;
+        text-wrap: balance;
+
+        @include bp(laptop) {
+          font-size: rem(18px);
+        }
+
+        a {
+          background-color: $modal-background-color;
+          color: $text-color;
+          text-decoration: none;
+          padding: rem(6px) rem(10px);
+          display: block;
+          margin-top: rem(5px);
+          border-radius: rem(25px);
+          transition: all 0.3s ease;
+
+          @include bp(laptop) {
+            padding: rem(8px) rem(15px);
+
+            &:hover {
+              background-color: $text-color;
+              color: $modal-background-color;
+            }
+          }
+        }
+      }
+    }
+
+    .empaque {
+      img {
+        width: 100%;
+        margin: rem(50px) 0;
+
+        @include bp(laptop) {
+          max-width: rem(800px);
+        }
+      }
+    }
+  }
+
+  .units-containers {
+
+    @include bp(laptop) {
+      display: flex;
+      flex-flow: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: rem(75px);
+    }
+
+    .stats-container {
+      h2 {
+        text-align: center;
+        font-size: rem(40px);
+      }
+
+      .stat {
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - rem(10px)));
+        gap: rem(20px);
+        margin-top: rem(10px);
+
+        .stat-item {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: rem(5px);
+
+          label {
+            font-size: rem(12px);
+            color: $text-color;
+            font-family: $font_medium;
+
+            @include bp(laptop) {
+              font-size: rem(15px);
+            }
+          }
+
+          input {
+            background-color: $background-color;
+            text-align: center;
+            border: none;
+            width: calc(100% - rem(40px));
+            padding: rem(17px) rem(10px) rem(15px) rem(10px);
+            font-size: rem(17px);
+            color: $text-color;
+            font-family: $font_medium;
+            border-radius: rem(10px);
+          }
+        }
+      }
+    }
+
+    figure {
+        img {
+          width: 100%;
+          margin: rem(40px) 0;
+          max-width: 900px;
+        }
+      }
+  }
+}

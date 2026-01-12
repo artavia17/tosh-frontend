@@ -1,0 +1,29 @@
+.already-have-account {
+  padding-bottom: rem(50px);
+
+  @include bp(laptop) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem(25px);
+  }
+
+  h4 {
+    text-align: center;
+    margin-bottom: rem(10px);
+
+    @include bp(laptop) {
+      margin-bottom: 0;
+    }
+  }
+
+  button,
+  a {
+    width: 100%;
+
+    @include bp(laptop) {
+      width: auto;
+      padding: rem(13px) rem(30px) rem(10px) rem(30px);
+    }
+  }
+}

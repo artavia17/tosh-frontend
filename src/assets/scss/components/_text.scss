@@ -1,0 +1,61 @@
+p,
+#success-promo-code,
+#success-invoice{
+    font-family: $font_medium;
+    color: $text-color;
+    font-size: rem(15px);
+}
+
+#success-promo-code,
+#success-invoice{
+    margin-top: rem(15px);
+    display: block;
+}
+
+strong{
+    font-family: $font_bold;
+    color: $text-color;
+    font-size: rem(15px);
+}
+
+h1{
+    font-family: $font_bold;
+    color: $text-color;
+    font-size: rem(30px);
+    text-align: center;
+    margin-bottom: rem(40px);
+
+    @include bp(laptop) {
+      font-size: rem(45px);
+    }
+}
+
+h2{
+    font-family: $font_bold;
+    color: $text-color;
+    font-size: rem(30px);
+
+    @include bp(laptop) {
+      font-size: rem(40px);
+    }
+}
+
+h3{
+    font-family: $font_bold;
+    color: $text-color;
+    font-size: rem(25px);
+}
+
+h4{
+    font-family: $font_bold;
+    color: $text-color;
+    font-size: rem(20px);
+}
+
+.shadow{
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.629);
+}
+
+.text-transform-uppercase{
+    text-transform: uppercase;
+}

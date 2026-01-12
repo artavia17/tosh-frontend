@@ -1,0 +1,48 @@
+.awards-page{
+    p{
+        text-align: center;
+    }
+
+    section{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        img{
+            width: 100%;
+
+            &.imagina{
+                margin-bottom: rem(20px);
+            }
+
+            @include bp(laptop){
+                max-width: rem(500px);
+                margin: auto;
+            }
+        }
+    }
+
+    .reclamar{
+        background-color: $modal-background-color;
+        padding: rem(50px);
+        border-radius: rem(10px);
+        margin-bottom : rem(50px);
+
+        @include bp(laptop){
+            margin-bottom: 0;
+        }
+
+        li{
+            color: $text-color;
+            font-family: $font_medium;
+            p{
+                text-align: left;
+
+                a{
+                    color: $background-color;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

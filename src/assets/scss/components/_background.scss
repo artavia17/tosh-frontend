@@ -1,0 +1,19 @@
+html{
+    background-color: $background-color;
+    background-image: url(../../img/png/background-home.png);
+    background-size: cover;
+    background-position: center;
+}
+
+header.home::before{
+        content: " ";
+        background-color: $background-color;
+        background-image: url(../../img/png/background-header.png);
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        height: calc(100vh - 25px);
+        width: 100%;
+        z-index: -1;
+}

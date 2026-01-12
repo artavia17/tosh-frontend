@@ -1,0 +1,194 @@
+.menu-toggle{
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: block;
+    position: fixed;
+    right: rem(20px);
+    top: rem(20px);
+    width: rem(50px);
+    height: rem(50px);
+    padding: rem(7px);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: .5s ease;
+    transform: rotate3d(1, 1, 1, 0deg);
+    z-index: 99;
+
+    @include bp(laptop){
+        display: none;
+    }
+
+    &.scrolled{
+        background-color: rgba(0, 0, 0, 0.363);
+        backdrop-filter: blur(5px);
+    }
+
+    span{
+        display: block;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        position: relative;
+
+        hr{
+            position: absolute;
+            width: 100%;
+            padding: 0px;
+            border: none;
+            height: rem(6px);
+            background-color: $text-color;
+            border-radius: rem(10px);
+            transition: .2s ease;
+
+            &:nth-child(1){
+                transform: translateY(-6px);
+            }
+
+            &:nth-child(2){
+                transform: translateY(6px);
+            }
+        }
+    }
+
+    &.open{
+        background-color: transparent;
+        transform: rotate3d(1, 1, 1, 360deg);
+
+        hr{
+            &:nth-child(1){
+                transform: translateY(0px) rotate(45deg);
+
+            }
+
+            &:nth-child(2){
+                transform: translateY(0px) rotate(-45deg);
+            }
+        }
+    }
+}
+
+#main-navigation{
+    @include bp(laptop) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-top: rem(50px);
+        display: flex;
+        justify-content: center;
+        z-index: 9;
+    }
+
+    #nav-menu{
+        background-color: $background-color;
+        z-index: 9;
+
+        // Position
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        // Size
+        width: 100svw;
+        height: 100svh;
+
+        // Flexbox
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        align-items: start;
+
+        // Visibility
+        transform: translateX(100%);
+        transition: .5s ease;
+
+        &.open{
+            transform: translateX(0);
+        }
+
+        @include bp(laptop){
+            transform: translateX(0);
+            position: relative;
+            width: auto;
+            height: auto;
+            width: 100%;
+            max-width: 1000px;
+            border-radius: rem(25px);
+        }
+
+        @include bp(laptopBIG) {
+            max-width: 1200px;
+        }
+
+        @include bp(escritorio) {
+            max-width: 1300px;
+        }
+
+        ul,
+        div{
+            width: 100%;
+            list-style: none;
+            display: flex;
+            flex-flow: column;
+            gap: rem(10px);
+
+            &.desktop-nav{
+                @include bp(laptop){
+                    display: none;
+                }
+            }
+
+            @include bp(laptop){
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: rem(15px);
+                width: calc(100% - rem(30px));
+            }
+        }
+
+        ul{
+            li{
+                @include bp(laptop){
+                    display: flex;
+                }
+            }
+        }
+        
+        a,
+        button{
+            color: $text-menu-color;
+            text-decoration: none;
+            background-color: transparent;
+            padding: none;
+            border: none;
+            font-family: $font_bold;
+            font-size: rem(22px);
+            text-transform: uppercase;
+            transition: all .3s ease;
+
+            &.active{
+                color: $text-color;
+            }
+
+            @include bp(laptop){
+                font-size: rem(15px);
+                cursor: pointer;
+                display: flex;
+                padding: 0 rem(10px);
+
+                &:hover{
+                    color: $text-color;
+                }
+
+                span{
+                    padding-top: rem(4px);
+                }
+            }
+        }
+
+    }
+}

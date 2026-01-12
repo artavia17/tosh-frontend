@@ -1,0 +1,62 @@
+.winners-page{
+    .winners-period{
+
+        border-bottom: 1px solid $text-color;
+        padding-bottom: rem(30px);
+        margin-bottom: rem(30px);
+
+        @include bp(laptop){
+            
+        }
+
+        &:last-of-type{
+            border-bottom: none;
+        }
+
+        div{
+            @include bp(laptop){
+                display: flex;
+                gap: rem(25px);
+            }
+
+            .title{
+                margin-bottom: rem(10px);
+
+                @include bp(laptop){
+                    width: rem(250px);
+                }
+            }
+
+            ul{
+                margin-bottom: rem(10px);
+
+                li{
+                    list-style: none;
+                    display: flex;
+                    gap: rem(20px);
+                    margin-bottom: rem(10px);
+
+                    strong{
+                        @include bp(laptop){
+                            margin-right: rem(50px);
+                        }
+                    }
+
+                    &:last-of-type{
+                        margin-bottom: rem(25px);
+                    }
+                }
+            }
+        }
+
+        button{
+            width: 100%;
+
+            @include bp(laptop){
+                width: auto;
+                margin: auto;
+                padding: rem(13px) rem(30px) rem(10px) rem(30px);
+            }
+        }
+    }
+}

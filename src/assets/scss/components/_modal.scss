@@ -1,0 +1,100 @@
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $modal-overlay-bg-color;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    .modal-content{
+        background-color: $button-color;
+        padding: rem(40px) rem(20px);
+        width: calc(100% - rem(80px));
+        border-radius: rem(10px);
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: rem(15px);
+        position: relative;
+        max-width: rem(400px);
+
+        @include bp(laptop){
+            padding: rem(45px) rem(45px);
+        }
+        
+        h3,
+        h2,
+        p,
+        strong{
+            color: $text-menu-color;
+        }
+
+        p{
+            text-align: center;
+            text-wrap: balance;
+
+            strong{
+                width: 100%;
+                display: block;
+            }
+        }
+
+        form{
+            label span{
+                color: $text-menu-color !important;
+            }
+
+            input{
+                border-color: $text-menu-color !important;
+            }
+        }
+
+        .modal-close-button{
+            position: absolute;
+            right: rem(15px);
+            top: rem(15px);
+            background-color: transparent;
+            border: none;
+            height: auto;
+            cursor: pointer;
+            transition: scale 0.2s ease-in-out;
+
+            &:hover {
+                scale: 1.1;
+            }
+
+            img{
+                width: rem(15px);
+            }
+        }
+
+        .icon{
+            width: rem(75px);
+            margin-bottom: rem(5px);
+        }
+
+        a{
+            width: 100%;
+        }
+
+        .submit-button{
+            margin-top: rem(10px);
+        }
+
+        .age-buttons{
+            display: flex;
+            flex-flow: row;
+            gap: rem(10px);
+            width: 100%;
+            
+            button{
+                width: 100%;
+            }
+        }
+    }
+}
