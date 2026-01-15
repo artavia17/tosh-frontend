@@ -6,11 +6,13 @@ import CheckIcon from '../assets/img/svg/check.svg';
 import countriesService from '../services/countries.service';
 import authService from '../services/auth.service';
 import { useAuth } from '../context/AuthContext';
+import { useCountry } from '../context/CountryContext';
 import type { Country } from '../types/api';
 
 const RegisterForm = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
+    const { selectedCountry: globalSelectedCountry } = useCountry();
 
     const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +30,22 @@ const RegisterForm = () => {
     // Referencias para el modal de éxito
     const successModalRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+    // Obtener URL del reglamento según el país seleccionado
+    const getReglamentoByCountry = (): string => {
+        // Usar el país del contexto global si está disponible, sino el local del formulario
+        const countryToUse = globalSelectedCountry || selectedCountry;
+
+        if (!countryToUse) return '/pdf/reglamento-cr.pdf'; // Default a Costa Rica
+
+        const reglamentos: Record<string, string> = {
+            'Guatemala': '/pdf/reglamento-gt.pdf',
+            'El Salvador': '/pdf/reglamento-els.pdf',
+            'Costa Rica': '/pdf/reglamento-cr.pdf'
+        };
+
+        return reglamentos[countryToUse.name] || '/pdf/reglamento-cr.pdf';
+    };
 
     // Cargar países al montar el componente
     useEffect(() => {
@@ -622,7 +640,7 @@ const RegisterForm = () => {
                             aria-describedby={formErrors.terms_accepted ? 'error-terms-conditions' : undefined}
                         />
                         <label htmlFor="termsAndConditions">
-                            <span>Autorizo los <a href="/pdf/terminos.pdf" target="_blank" rel="noopener noreferrer">términos y condiciones</a>.</span>
+                            <span>Autorizo los <a href={getReglamentoByCountry()} target="_blank" rel="noopener noreferrer">términos y condiciones</a>.</span>
                             <span className="required-indicator" aria-label="campo obligatorio">*</span>
                         </label>
                         {formErrors.terms_accepted && (

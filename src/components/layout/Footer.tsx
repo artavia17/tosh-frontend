@@ -71,8 +71,9 @@ const Footer = () => {
                         {/* Enlaces legales - WCAG 2.4.4, 3.2.5 */}
                         <li>
                             <a
-                                href="/pdf/terminos.pdf"
-                                target='_black'
+                                href={getReglamentoByCountry()}
+                                target='_blank'
+                                rel="noopener noreferrer"
                                 aria-label="Leer términos y condiciones de la promoción"
                             >
                                 Términos y condiciones
