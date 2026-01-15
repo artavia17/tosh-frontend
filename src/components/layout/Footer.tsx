@@ -3,8 +3,23 @@ import ArrowRightIcon from '../../assets/img/svg/arrow.right.circle.svg';
 import ChickyLogo from '../../assets/img/webp/tosh-logo.webp';
 import FacebookLogo from '../../assets/img/svg/facebook-logo.svg';
 import InstagramLogo from '../../assets/img/svg/instagram-logo.svg';
+import { useCountry } from '../../context/CountryContext';
 
 const Footer = () => {
+    const { selectedCountry } = useCountry();
+
+    // Obtener URL del reglamento según el país seleccionado
+    const getReglamentoByCountry = (): string => {
+        if (!selectedCountry) return '/pdf/reglamento-cr.pdf'; // Default a Costa Rica
+
+        const reglamentos: Record<string, string> = {
+            'Guatemala': '/pdf/reglamento-gt.pdf',
+            'El Salvador': '/pdf/reglamento-els.pdf',
+            'Costa Rica': '/pdf/reglamento-cr.pdf'
+        };
+
+        return reglamentos[selectedCountry.name] || '/pdf/reglamento-cr.pdf';
+    };
     return (
         // WCAG 2.4.1 - Landmark contentinfo
         <footer role="contentinfo" aria-label="Pie de página con información legal y enlaces de redes sociales" className="responsive-box">
@@ -12,7 +27,7 @@ const Footer = () => {
             {/* Reglamento - WCAG 2.4.4 */}
             <nav aria-label="Enlaces legales principales" className="footer-reglamento-nav">
                 <a
-                    href="/pdf/reglamento.pdf"
+                    href={getReglamentoByCountry()}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Ver reglamento completo de la promoción"

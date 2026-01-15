@@ -1,6 +1,7 @@
 .already-have-account {
   padding-bottom: rem(50px);
 
+
   @include bp(laptop) {
     display: flex;
     justify-content: center;
@@ -19,6 +20,10 @@
 
   button,
   a {
+    @media (max-width: 500px) {
+      margin: auto;
+    }
+
     @include bp(laptop) {
       width: auto;
       padding: rem(13px) rem(30px) rem(10px) rem(30px);

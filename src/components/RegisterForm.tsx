@@ -498,7 +498,7 @@ const RegisterForm = () => {
                             onChange={(e) => setShowCommunicationChannels(e.target.checked)}
                         />
                         <label htmlFor="communicationsConsent">
-                            <span>Autorizo recibir comunicaciones sobre actividades, eventos y promociones de la marca Chicky.</span>
+                            <span>Autorizo recibir comunicaciones sobre actividades, eventos y promociones de la marca Tosh.</span>
                             <span className="required-indicator" aria-label="campo obligatorio">*</span>
                         </label>
                         <span id="desc-communications-consent" className="visually-hidden">
@@ -536,7 +536,7 @@ const RegisterForm = () => {
                                     <span>Autorizo ser contactado por WhatsApp</span>
                                 </label>
                                 <span id="desc-whatsapp" className="visually-hidden">
-                                    Recibirá mensajes de WhatsApp sobre promociones y eventos de Chicky
+                                    Recibirá mensajes de WhatsApp sobre promociones y eventos de Tosh
                                 </span>
                             </div>
 
@@ -552,7 +552,7 @@ const RegisterForm = () => {
                                     <span>Autorizo ser contactado por teléfono</span>
                                 </label>
                                 <span id="desc-phone" className="visually-hidden">
-                                    Recibirá llamadas telefónicas sobre promociones y eventos de Chicky
+                                    Recibirá llamadas telefónicas sobre promociones y eventos de Tosh
                                 </span>
                             </div>
 
@@ -568,7 +568,7 @@ const RegisterForm = () => {
                                     <span>Autorizo ser contactado por correo electrónico</span>
                                 </label>
                                 <span id="desc-email" className="visually-hidden">
-                                    Recibirá correos electrónicos sobre promociones y eventos de Chicky
+                                    Recibirá correos electrónicos sobre promociones y eventos de Tosh
                                 </span>
                             </div>
 
@@ -584,7 +584,7 @@ const RegisterForm = () => {
                                     <span>Autorizo ser contactado por SMS</span>
                                 </label>
                                 <span id="desc-sms" className="visually-hidden">
-                                    Recibirá mensajes de texto SMS sobre promociones y eventos de Chicky
+                                    Recibirá mensajes de texto SMS sobre promociones y eventos de Tosh
                                 </span>
                             </div>
                         </div>

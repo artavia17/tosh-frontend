@@ -144,6 +144,17 @@ form.normal {
 
 
 .register-form-section{
+
+  img{
+    margin: auto;
+    display: block;
+    margin-bottom: rem(30px);
+
+    @include bp(laptop) {
+      margin-bottom: rem(50px);
+    }
+  }
+
   @include bp(laptop) {
     display: flex;
     align-items: center;
