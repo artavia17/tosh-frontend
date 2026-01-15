@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import countriesService from '../services/countries.service';
 import type { Country } from '../types/api';
 
@@ -81,6 +81,7 @@ export const CountryProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCountry = () => {
     const context = useContext(CountryContext);
     if (context === undefined) {

@@ -81,16 +81,18 @@ const PromotionalCode = () => {
             if (inputRef.current) {
                 inputRef.current.value = '';
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             // Manejar errores específicos
-            if (error.status === 422 && error.errors) {
+            const apiError = error as { status?: number; errors?: Record<string, string[]> };
+
+            if (apiError.status === 422 && apiError.errors) {
                 // Error de validación
-                const firstError = Object.values(error.errors)[0];
+                const firstError = Object.values(apiError.errors)[0];
                 setError(Array.isArray(firstError) ? firstError[0] : 'Error de validación');
-            } else if (error.status === 400) {
+            } else if (apiError.status === 400) {
                 // Factura ya utilizada
                 setError('Esta factura ya fue utilizada anteriormente');
-            } else if (error.status === 404) {
+            } else if (apiError.status === 404) {
                 // Factura no encontrada
                 setError('La factura ingresada no es válida');
             } else {
