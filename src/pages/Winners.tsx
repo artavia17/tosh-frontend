@@ -113,8 +113,8 @@ const Winners = () => {
                         {/* Mensaje cuando no hay ganadores */}
                         {!isLoadingWinners && winners.length === 0 && selectedCountry && (
                             <div className="no-winners-message" role="status" aria-live="polite">
-                                <p>Aún no se han seleccionado ganadores para este país.</p>
-                                <p>Revisá esta página próximamente para ver los resultados.</p>
+                                <p style={{textAlign: "center"}}>Aún no se han seleccionado ganadores para este país.</p>
+                                <p style={{textAlign: "center"}}>Revisá esta página próximamente para ver los resultados.</p>
                             </div>
                         )}
 
