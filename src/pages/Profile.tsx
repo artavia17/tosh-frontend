@@ -97,10 +97,10 @@ const Profile = () => {
         <>
             {/* SEO Meta Tags */}
             <SEO
-                title="Mi Perfil - Chiky Stranger Things | Datos y facturas ingresados"
-                description="Consultá tu perfil de usuario, revisá tus datos personales y el historial completo de facturas promocionales ingresados en la promoción Chiky Stranger Things."
-                keywords="perfil usuario Chiky, mi cuenta, facturas ingresados, historial facturas, datos personales, mi perfil Stranger Things"
-                ogTitle="Mi Perfil - Chiky Stranger Things"
+                title="Mi Perfil - Lo bueno de cuidarte | Datos y facturas ingresados"
+                description="Consultá tu perfil de usuario, revisá tus datos personales y el historial completo de facturas promocionales ingresados en la promoción Lo bueno de cuidarte."
+                keywords="perfil usuario Tosh, mi cuenta, facturas ingresados, historial facturas, datos personales, mi perfil Lo bueno de cuidarte"
+                ogTitle="Mi Perfil - Lo bueno de cuidarte"
                 ogDescription="Accedé a tu perfil y consultá el historial de todos tus facturas ingresados"
                 ogUrl="https://chikystrangerthings.com/perfil"
                 canonical="https://chikystrangerthings.com/perfil"

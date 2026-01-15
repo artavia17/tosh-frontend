@@ -9,46 +9,61 @@ import BarraImg from '../assets/img/png/barra.png';
 import SEO from '../components/SEO';
 import GetInto from '../components/GetInto';
 import { Link } from 'react-router-dom';
+import { useCountry } from '../context/CountryContext';
 
 const Home = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { selectedCountry } = useCountry();
+
+  // Obtener precio según el país seleccionado
+  const getPriceByCountry = (): string => {
+    if (!selectedCountry) return '₡4.000'; // Default to Costa Rica
+
+    const prices: Record<string, string> = {
+      'Guatemala': 'Q50,00',
+      'El Salvador': '$7.00',
+      'Costa Rica': '₡4.000'
+    };
+
+    return prices[selectedCountry.name] || '₡4.000';
+  };
 
   return (
     <>
       {/* SEO Optimization */}
       <SEO
-        title="Chiky Stranger Things - Registrá facturas y ganá premios exclusivos"
-        description="Comprá Chiky, registrá tus facturas promocionales y ganá mochilas, loncheras y cartucheras de Stranger Things. Participá en la promoción oficial de Chiky y ganá premios increíbles."
-        keywords="Chiky, Stranger Things, promoción, facturas promocionales, ganar premios, mochilas, loncheras, cartucheras, sorteo, Pozuelo"
-        ogTitle="Chiky Stranger Things - ¡Participá y ganá!"
-        ogDescription="Comprá Chiky, registrá facturas y ganá increíbles premios de Stranger Things"
+        title="Lo bueno de cuidarte - Registrá facturas y ganá premios exclusivos"
+        description="Comprá Tosh, registrá tus facturas promocionales y ganá mochilas, loncheras y cartucheras de Lo bueno de cuidarte. Participá en la promoción oficial de Tosh y ganá premios increíbles."
+        keywords="Tosh, Lo bueno de cuidarte, promoción, facturas promocionales, ganar premios, mochilas, loncheras, cartucheras, sorteo, Pozuelo"
+        ogTitle="Lo bueno de cuidarte - ¡Participá y ganá!"
+        ogDescription="Comprá Tosh, registrá facturas y ganá increíbles premios de Lo bueno de cuidarte"
         ogUrl="https://chikystrangerthings.com"
         canonical="https://chikystrangerthings.com"
       />
       {/* WCAG 2.4.1 - Landmark regions */}
-      <header className='home top-space' role="banner" aria-label="Encabezado principal de Chiky Stranger Things">
+      <header className='home top-space' role="banner" aria-label="Encabezado principal de Lo bueno de cuidarte">
 
         {/* Introducción al programa - WCAG 1.3.1 */}
         <section aria-labelledby="hero-heading" className="hero-section responsive-box">
           <h1 id="hero-heading" className="visually-hidden">
-            Bienvenido a la promoción Chiky Stranger Things
+            Bienvenido a la promoción Lo bueno de cuidarte
           </h1>
           {/* WCAG 1.1.1 - Imágenes con texto alternativo descriptivo */}
           <section className='header-col'>
             <img
               src={ImageHeaderDesktop}
-              alt="Banner promocional Chiky Stranger Things - Comprá, registrá facturas y ganá premios exclusivos"
+              alt="Banner promocional Lo bueno de cuidarte - Comprá, registrá facturas y ganá premios exclusivos"
               className="desktop"
               loading="eager"
             />
             <img
               src={ImageHeaderMobile}
-              alt="Banner promocional Chiky Stranger Things - Comprá, registrá facturas y ganá premios exclusivos"
+              alt="Banner promocional Lo bueno de cuidarte - Comprá, registrá facturas y ganá premios exclusivos"
               className="mobile"
               loading="eager"
             />
             <section className='reward-section'>
-              <img src={ImageReward} alt="Premio scooter de la promoción Chiky Stranger Things" />
+              <img src={ImageReward} alt="Premio scooter de la promoción Lo bueno de cuidarte" />
               <Link
                 to="/registrate"
                 aria-label="Ir a la página de registro de usuario"
@@ -103,7 +118,7 @@ const Home = () => {
                 </div>
               </div>
               <p>
-                <strong>Comprá ₡4.000</strong> en <br/> productos Tosh
+                <strong>Comprá {getPriceByCountry()}</strong> en <br/> productos Tosh
               </p>
             </li>
             <li>
@@ -129,10 +144,10 @@ const Home = () => {
           </ol>
 
           {/* WCAG 1.1.1 - Imagen de producto con alt descriptivo */}
-          <figure role="group" aria-label="Imagen del producto Chiky" className='empaque'>
+          <figure role="group" aria-label="Imagen del producto Tosh" className='empaque'>
             <img
               src={ChickyEmpaque}
-              alt="Empaque de producto Chiky con código promocional para participar"
+              alt="Empaque de producto Tosh con código promocional para participar"
               loading="lazy"
             />
           </figure>
@@ -148,7 +163,7 @@ const Home = () => {
           <figure role="group" aria-label="Imagen de los premios">
             <img
               src={ActivaImg}
-              alt="Premios disponibles: mochilas, loncheras y cartucheras de Stranger Things"
+              alt="Premios disponibles: mochilas, loncheras y cartucheras de Lo bueno de cuidarte"
               loading="lazy"
             />
           </figure>

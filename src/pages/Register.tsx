@@ -1,12 +1,12 @@
 import ChickyLogo from '../assets/img/webp/tosh-logo.webp';
-import BorderIcon from '../assets/img/svg/border.svg';
-import BorderBigIcon from '../assets/img/svg/border-big.svg';
 import { useState } from 'react';
 import GetInto from '../components/GetInto';
 import RegisterForm from '../components/RegisterForm';
 import { NavLink } from 'react-router-dom';
 import SEO from '../components/SEO';
-// import CharacterImg from '../assets/img/webp/character.webp';
+import GalletaImg from '../assets/img/png/galleta.png';
+import CerealImg from '../assets/img/png/cereal.png';
+import VasoImg from '../assets/img/png/vaso.png';
 import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
@@ -26,13 +26,34 @@ const Register = () => {
         <>
             {/* SEO Meta Tags */}
             <SEO
-                title="Registrate - Chiky Stranger Things | Creá tu cuenta y ganá"
-                description="Registrate en la promoción Chiky Stranger Things. Completá tus datos y empezá a ingresar facturas para ganar mochilas, loncheras y cartucheras de Stranger Things."
-                keywords="registro Chiky, crear cuenta, formulario registro, Stranger Things promoción, registrarse, nueva cuenta, participar promoción"
-                ogTitle="Registrate y Participá - Chiky Stranger Things"
-                ogDescription="Creá tu cuenta gratis y empezá a participar por increíbles premios de Stranger Things con Chiky"
+                title="Registrate - Lo bueno de cuidarte | Creá tu cuenta y ganá"
+                description="Registrate en la promoción Lo bueno de cuidarte. Completá tus datos y empezá a ingresar facturas para ganar mochilas, loncheras y cartucheras de Lo bueno de cuidarte."
+                keywords="registro Tosh, crear cuenta, formulario registro, Lo bueno de cuidarte promoción, registrarse, nueva cuenta, participar promoción"
+                ogTitle="Registrate y Participá - Lo bueno de cuidarte"
+                ogDescription="Creá tu cuenta gratis y empezá a participar por increíbles premios de Lo bueno de cuidarte con Tosh"
                 ogUrl="https://chikystrangerthings.com/registrate"
                 canonical="https://chikystrangerthings.com/registrate"
+            />
+
+            <img
+                src={GalletaImg}
+                alt="Galleta Tosh"
+                loading="lazy"
+                className="top-left-absolute"
+            />
+
+            <img
+                src={VasoImg}
+                alt="Vaso Tosh"
+                loading="lazy"
+                className="bottom-left-absolute"
+            />
+
+            <img
+                src={CerealImg}
+                alt="Cereal Tosh"
+                loading="lazy"
+                className="bottom-right-absolute"
             />
 
             {/* WCAG 2.4.1 - Main landmark */}
@@ -49,7 +70,7 @@ const Register = () => {
                         {/* WCAG 1.1.1 - Imagen descriptiva */}
                         {/* <img
                             src={CharacterImg}
-                            alt="Personaje de Stranger Things"
+                            alt="Personaje de Lo bueno de cuidarte"
                             loading="lazy"
                             className="character-image"
                         /> */}
@@ -57,7 +78,7 @@ const Register = () => {
                         {/* WCAG 1.1.1 - Logo descriptivo */}
                         <img
                             src={ChickyLogo}
-                            alt="Logotipo de Chiky"
+                            alt="Logotipo de Tosh"
                             loading="lazy"
                             className="chicky-logo"
                         />

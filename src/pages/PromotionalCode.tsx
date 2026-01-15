@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import BorderIcon from '../assets/img/svg/border.svg';
-import BorderBigIcon from '../assets/img/svg/border-big.svg';
 import { useState, useRef } from 'react';
 import type { FormEvent, ChangeEvent } from 'react';
 import SEO from '../components/SEO';
 import codesService from '../services/codes.service';
 import { useAuth } from '../context/AuthContext';
+import VasoImg from '../assets/img/png/vaso-dos.png';
+import BarritaImg from '../assets/img/png/barrita.png';
 
 const PromotionalCode = () => {
     const { refreshUser } = useAuth();
@@ -107,13 +107,27 @@ const PromotionalCode = () => {
         <>
             {/* SEO Meta Tags */}
             <SEO
-                title="Ingresá Códigos - Chiky Stranger Things | Participá por premios"
-                description="Ingresá tus facturas promocionales de Chiky y participá por mochilas, loncheras y cartucheras de Stranger Things. Comprá, registrá y ganá."
-                keywords="ingresar facturas Chiky, facturas promocionales, participar sorteo, facturas Stranger Things, ingresar código, promoción Chiky"
-                ogTitle="Ingresá tus Códigos - Chiky Stranger Things"
-                ogDescription="Ingresá los facturas de tus productos Chiky y participá por premios exclusivos de Stranger Things"
+                title="Ingresá Códigos - Lo bueno de cuidarte | Participá por premios"
+                description="Ingresá tus facturas promocionales de Tosh y participá por mochilas, loncheras y cartucheras de Lo bueno de cuidarte. Comprá, registrá y ganá."
+                keywords="ingresar facturas Tosh, facturas promocionales, participar sorteo, facturas Lo bueno de cuidarte, ingresar código, promoción Tosh"
+                ogTitle="Ingresá tus Códigos - Lo bueno de cuidarte"
+                ogDescription="Ingresá los facturas de tus productos Tosh y participá por premios exclusivos de Lo bueno de cuidarte"
                 ogUrl="https://chikystrangerthings.com/ingresa-codigos"
                 canonical="https://chikystrangerthings.com/ingresa-codigos"
+            />
+
+            <img
+                src={BarritaImg}
+                alt="Galleta Tosh"
+                loading="lazy"
+                className="top-left-absolute"
+            />
+
+            <img
+                src={VasoImg}
+                alt="Vaso Tosh"
+                loading="lazy"
+                className="bottom-right-absolute"
             />
 
             {/* WCAG 2.4.1 - Main landmark */}

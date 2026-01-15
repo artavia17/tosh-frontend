@@ -2,9 +2,11 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import GetInto from "../GetInto";
 import { useAuth } from "../../context/AuthContext";
+import { useCountry } from "../../context/CountryContext";
 
 const Navigation = () => {
   const { isAuthenticated } = useAuth();
+  const { selectedCountry, setIsCountryModalOpen } = useCountry();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Inicializar estados de modales basados en localStorage - evita setState en useEffect
@@ -336,11 +338,38 @@ const Navigation = () => {
                 </button>
               </li>
             )}
+            {/* Botón de cambiar país en menú móvil */}
+            <li role="listitem">
+              <button
+                onClick={() => {
+                  handleNavigation();
+                  setIsCountryModalOpen(true);
+                }}
+                aria-label={selectedCountry ? `País seleccionado: ${selectedCountry.name}. Clic para cambiar` : 'Seleccionar país'}
+                className="nav-button country-button-mobile"
+              >
+                <span>{selectedCountry?.name || 'Seleccionar país'}</span>
+              </button>
+            </li>
           </ul>
 
 
           {/* Enlaces adicionales fuera del menú móvil */}
           <div className="desktop-nav responsive-box " aria-label="Acciones de usuario">
+            {/* Botón de país */}
+            <button
+              onClick={() => {
+                handleNavigation();
+                setIsCountryModalOpen(true);
+              }}
+              aria-label={selectedCountry ? `País seleccionado: ${selectedCountry.name}. Clic para cambiar` : 'Seleccionar país'}
+              className="nav-button country-button"
+              title={selectedCountry ? `País: ${selectedCountry.name}` : 'Seleccionar país'}
+            >
+              <span className="country-flag" aria-hidden="true">🌍</span>
+              <span className="country-name">{selectedCountry?.name || 'País'}</span>
+            </button>
+
             {isAuthenticated ? (
               <NavLink
                 to="/mi-perfil"

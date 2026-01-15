@@ -8,11 +8,11 @@ const Awards = () => {
             <main className='top-space awards-page'>
                 <div className="responsive-box">
                     <section>
-                        <img src={ImaginaImage} alt="Mochilas de la colección Chiky & Stranger Things" className='imagina'/>
+                        <img src={ImaginaImage} alt="Mochilas de la colección Tosh & Lo bueno de cuidarte" className='imagina'/>
                         <p>
                             Con la <strong>Xiaomi 4</strong> Lite podés moverte con ligereza, seguridad y estilo. Su motor ágil y batería duradera de hasta 25 km te permiten llegar a donde quieras sin estrés, mientras cuidás tu tiempo y disfrutás tu camino. Sus frenos duales E‑ABS + tambor te dan mayor seguridad en cada recorrido. Es más que una patineta: es tu compañera para sumar bienestar, movimiento y libertad a tu día a día.
                         </p>
-                        <img src={AwardsScooter} alt="Mochilas de la colección Chiky & Stranger Things" />
+                        <img src={AwardsScooter} alt="Mochilas de la colección Tosh & Lo bueno de cuidarte" />
                     </section>
                     {/* <section className='reclamar'>
                         <h1>¿CÓMO RECLAMAR TUS PREMIOS?</h1>

@@ -211,3 +211,37 @@ img {
     min-width: 200px;
   }
 }
+
+
+.top-left-absolute{
+  position: absolute;
+  top: 100px;
+  left: 0;
+  display: none;
+  @include bp(tablet){
+    width: rem(200px); 
+    display: block;
+  }
+}
+
+.bottom-left-absolute{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  display: none;
+  @include bp(tablet){
+    width: rem(200px); 
+    display: block;
+  }
+}
+
+.bottom-right-absolute{
+  position: absolute;
+  bottom: 100px;
+  right: 0;
+  display: none;
+  @include bp(tablet){
+    width: rem(200px); 
+    display: block;
+  }
+}

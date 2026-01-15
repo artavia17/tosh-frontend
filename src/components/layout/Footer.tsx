@@ -43,7 +43,7 @@ const Footer = () => {
                     {({ isActive }) => (
                         <img
                             src={ChickyLogo}
-                            alt="Logotipo de Chiky - Volver a inicio"
+                            alt="Logotipo de Tosh - Volver a inicio"
                             loading="lazy"
                             aria-current={isActive ? 'page' : undefined}
                         />
@@ -81,7 +81,7 @@ const Footer = () => {
                                 href="https://www.facebook.com/TOSHBienestar"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Visitar página de Facebook de Chiky (se abre en nueva pestaña)"
+                                aria-label="Visitar página de Facebook de Tosh (se abre en nueva pestaña)"
                                 className="social-link"
                             >
                                 <img
@@ -98,7 +98,7 @@ const Footer = () => {
                                 href="https://www.instagram.com/toshbienestar/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Visitar perfil de Instagram de Chiky (se abre en nueva pestaña)"
+                                aria-label="Visitar perfil de Instagram de Tosh (se abre en nueva pestaña)"
                                 className="social-link"
                             >
                                 <img
