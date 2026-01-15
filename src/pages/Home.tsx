@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import ImageHeaderDesktop from '../assets/img/webp/banner-home-desktop.webp';
-import ImageHeaderMobile from '../assets/img/webp/banner-home-mobile.webp';
 import ImageReward from '../assets/img/webp/scooter.webp';
 import ChickyEmpaque from '../assets/img/webp/toash-empaques.webp';
 import ActivaImg from '../assets/img/webp/activa.webp';
@@ -53,15 +52,15 @@ const Home = () => {
             <img
               src={ImageHeaderDesktop}
               alt="Banner promocional Lo bueno de cuidarte - Comprá, registrá facturas y ganá premios exclusivos"
-              className="desktop"
+              // className="desktop"
               loading="eager"
             />
-            <img
+            {/* <img
               src={ImageHeaderMobile}
               alt="Banner promocional Lo bueno de cuidarte - Comprá, registrá facturas y ganá premios exclusivos"
               className="mobile"
               loading="eager"
-            />
+            /> */}
             <section className='reward-section'>
               <img src={ImageReward} alt="Premio scooter de la promoción Lo bueno de cuidarte" />
               <Link

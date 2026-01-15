@@ -1,4 +1,10 @@
 .winners-page{
+    margin-bottom: rem(40px);
+
+    @include bp(laptop){
+        margin-bottom: rem(0px);
+    }
+
     .winners-period{
 
         border-bottom: 1px solid $text-color;

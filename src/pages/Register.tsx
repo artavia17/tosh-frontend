@@ -1,5 +1,5 @@
 import ChickyLogo from '../assets/img/webp/tosh-logo.webp';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import GetInto from '../components/GetInto';
 import RegisterForm from '../components/RegisterForm';
 import { NavLink } from 'react-router-dom';
@@ -13,6 +13,17 @@ const Register = () => {
     const { isAuthenticated } = useAuth();
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
+    // Estados para verificación de edad
+    const [isAgeVerificationModalOpen, setIsAgeVerificationModalOpen] = useState(() => {
+        const ageVerified = localStorage.getItem('age_verified');
+        return !ageVerified; // Mostrar si no ha verificado la edad
+    });
+    const [isAgeRestrictionModalOpen, setIsAgeRestrictionModalOpen] = useState(false);
+
+    // Referencias para modales
+    const ageVerificationModalRef = useRef<HTMLDivElement>(null);
+    const ageRestrictionModalRef = useRef<HTMLDivElement>(null);
+
     // Handlers para modal de login
     const handleOpenLoginModal = () => {
         setIsLoginModalOpen(true);
@@ -21,6 +32,76 @@ const Register = () => {
     const handleLoginClose = () => {
         setIsLoginModalOpen(false);
     };
+
+    // Handlers para verificación de edad
+    const handleAgeYes = () => {
+        localStorage.setItem('age_verified', 'true');
+        setIsAgeVerificationModalOpen(false);
+    };
+
+    const handleAgeNo = () => {
+        setIsAgeVerificationModalOpen(false);
+        setIsAgeRestrictionModalOpen(true);
+    };
+
+    // Trap de foco para modales - WCAG 2.4.3
+    useEffect(() => {
+        const trapFocusInModal = (modalRef: React.RefObject<HTMLDivElement | null>, isOpen: boolean) => {
+            if (!isOpen || !modalRef.current) return;
+
+            const focusableElements = modalRef.current.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstElement = focusableElements[0] as HTMLElement;
+            const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+            const handleTabKey = (e: KeyboardEvent) => {
+                if (e.key !== 'Tab') return;
+
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement?.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement?.focus();
+                        e.preventDefault();
+                    }
+                }
+            };
+
+            document.addEventListener('keydown', handleTabKey);
+            firstElement?.focus();
+
+            return () => document.removeEventListener('keydown', handleTabKey);
+        };
+
+        if (isAgeVerificationModalOpen) {
+            return trapFocusInModal(ageVerificationModalRef, isAgeVerificationModalOpen);
+        }
+        if (isAgeRestrictionModalOpen) {
+            return trapFocusInModal(ageRestrictionModalRef, isAgeRestrictionModalOpen);
+        }
+    }, [isAgeVerificationModalOpen, isAgeRestrictionModalOpen]);
+
+    // Prevenir scroll cuando hay modal abierto - WCAG 2.4.3
+    useEffect(() => {
+        const hasOpenModal = isAgeVerificationModalOpen || isAgeRestrictionModalOpen;
+
+        if (hasOpenModal) {
+            document.body.style.overflow = 'hidden';
+            document.body.setAttribute('aria-hidden', 'true');
+        } else {
+            document.body.style.overflow = '';
+            document.body.removeAttribute('aria-hidden');
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.body.removeAttribute('aria-hidden');
+        };
+    }, [isAgeVerificationModalOpen, isAgeRestrictionModalOpen]);
 
     return (
         <>
@@ -121,6 +202,67 @@ const Register = () => {
                 isOpen={isLoginModalOpen}
                 onClose={handleLoginClose}
             />
+
+            {/* Modal de verificación de edad - WCAG 2.4.3, 4.1.2 */}
+            {isAgeVerificationModalOpen && (
+                <div
+                    role="alertdialog"
+                    aria-modal="true"
+                    aria-labelledby="age-verification-title"
+                    className="modal-overlay"
+                    ref={ageVerificationModalRef}
+                >
+                    <div className="modal-content responsive-box" role="document">
+                        <h3 id="age-verification-title">
+                            ¿SOS MAYOR DE EDAD?
+                        </h3>
+                        <p className="visually-hidden">
+                            Para continuar, debe confirmar que es mayor de 18 años
+                        </p>
+                        <div role="group" aria-label="Verificación de edad" className="age-buttons">
+                            <button
+                                onClick={handleAgeYes}
+                                type="button"
+                                aria-label="Sí, soy mayor de 18 años"
+                                className="btn-accept"
+                                autoFocus
+                            >
+                                Sí
+                            </button>
+                            <button
+                                onClick={handleAgeNo}
+                                type="button"
+                                aria-label="No, soy menor de 18 años"
+                                className="btn-accept"
+                            >
+                                No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal de restricción de edad - WCAG 2.4.3, 4.1.2 */}
+            {isAgeRestrictionModalOpen && (
+                <div
+                    role="alertdialog"
+                    aria-modal="true"
+                    aria-labelledby="age-restriction-title"
+                    aria-describedby="age-restriction-description"
+                    aria-live="assertive"
+                    className="modal-overlay"
+                    ref={ageRestrictionModalRef}
+                >
+                    <div className="modal-content" role="document">
+                        <h2 id="age-restriction-title">
+                            LO SENTIMOS,
+                        </h2>
+                        <p id="age-restriction-description">
+                            <strong>Solo pueden participar mayores de 18 años</strong>
+                        </p>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

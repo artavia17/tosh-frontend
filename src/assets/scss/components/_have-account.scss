@@ -19,8 +19,6 @@
 
   button,
   a {
-    width: 100%;
-
     @include bp(laptop) {
       width: auto;
       padding: rem(13px) rem(30px) rem(10px) rem(30px);

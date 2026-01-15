@@ -15,13 +15,6 @@ const Navigation = () => {
     return !cookiePreference; // Mostrar modal si no hay preferencia
   });
 
-  const [isAgeVerificationModalOpen, setIsAgeVerificationModalOpen] = useState(() => {
-    const cookiePreference = localStorage.getItem('cookie_preference');
-    const ageVerified = localStorage.getItem('age_verified');
-    return !!(cookiePreference && !ageVerified); // Mostrar si aceptó cookies pero no verificó edad
-  });
-
-  const [isAgeRestrictionModalOpen, setIsAgeRestrictionModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -31,8 +24,6 @@ const Navigation = () => {
 
   // Referencias para modales
   const cookieModalRef = useRef<HTMLDivElement>(null);
-  const ageVerificationModalRef = useRef<HTMLDivElement>(null);
-  const ageRestrictionModalRef = useRef<HTMLDivElement>(null);
 
   // Cerrar menú con tecla Escape
   useEffect(() => {
@@ -46,15 +37,12 @@ const Navigation = () => {
         if (isCookieModalOpen) {
           // Cookie modal es no-dismissible, no se cierra con Escape
         }
-        if (isAgeVerificationModalOpen) {
-          // Age verification es no-dismissible
-        }
       }
     };
 
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isMenuOpen, isCookieModalOpen, isAgeVerificationModalOpen]);
+  }, [isMenuOpen, isCookieModalOpen]);
 
   // Manejar foco cuando se abre el menú
   useEffect(() => {
@@ -99,19 +87,11 @@ const Navigation = () => {
     if (isCookieModalOpen) {
       return trapFocusInModal(cookieModalRef, isCookieModalOpen);
     }
-    if (isAgeVerificationModalOpen) {
-      return trapFocusInModal(ageVerificationModalRef, isAgeVerificationModalOpen);
-    }
-    if (isAgeRestrictionModalOpen) {
-      return trapFocusInModal(ageRestrictionModalRef, isAgeRestrictionModalOpen);
-    }
-  }, [isCookieModalOpen, isAgeVerificationModalOpen, isAgeRestrictionModalOpen]);
+  }, [isCookieModalOpen]);
 
   // Prevenir scroll cuando hay modal abierto - WCAG 2.4.3
   useEffect(() => {
-    const hasOpenModal = isCookieModalOpen || isAgeVerificationModalOpen || isAgeRestrictionModalOpen;
-
-    if (hasOpenModal) {
+    if (isCookieModalOpen) {
       document.body.style.overflow = 'hidden';
       document.body.setAttribute('aria-hidden', 'true');
     } else {
@@ -123,7 +103,7 @@ const Navigation = () => {
       document.body.style.overflow = '';
       document.body.removeAttribute('aria-hidden');
     };
-  }, [isCookieModalOpen, isAgeVerificationModalOpen, isAgeRestrictionModalOpen]);
+  }, [isCookieModalOpen]);
 
   // Detectar scroll para agregar clase - Performance optimizado
   useEffect(() => {
@@ -169,24 +149,11 @@ const Navigation = () => {
   const handleAcceptCookies = () => {
     localStorage.setItem('cookie_preference', 'accepted');
     setIsCookieModalOpen(false);
-    setIsAgeVerificationModalOpen(true);
   };
 
   const handleRejectCookies = () => {
     localStorage.setItem('cookie_preference', 'rejected');
     setIsCookieModalOpen(false);
-    setIsAgeVerificationModalOpen(true);
-  };
-
-  // Handlers para verificación de edad
-  const handleAgeYes = () => {
-    localStorage.setItem('age_verified', 'true');
-    setIsAgeVerificationModalOpen(false);
-  };
-
-  const handleAgeNo = () => {
-    setIsAgeVerificationModalOpen(false);
-    setIsAgeRestrictionModalOpen(true);
   };
 
   // Handlers para modal de login
@@ -357,18 +324,6 @@ const Navigation = () => {
           {/* Enlaces adicionales fuera del menú móvil */}
           <div className="desktop-nav responsive-box " aria-label="Acciones de usuario">
             {/* Botón de país */}
-            <button
-              onClick={() => {
-                handleNavigation();
-                setIsCountryModalOpen(true);
-              }}
-              aria-label={selectedCountry ? `País seleccionado: ${selectedCountry.name}. Clic para cambiar` : 'Seleccionar país'}
-              className="nav-button country-button"
-              title={selectedCountry ? `País: ${selectedCountry.name}` : 'Seleccionar país'}
-            >
-              <span className="country-flag" aria-hidden="true">🌍</span>
-              <span className="country-name">{selectedCountry?.name || 'País'}</span>
-            </button>
 
             {isAuthenticated ? (
               <NavLink
@@ -429,67 +384,6 @@ const Navigation = () => {
                 Rechazar
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Modal de verificación de edad - WCAG 2.4.3, 4.1.2 */}
-      {isAgeVerificationModalOpen && (
-        <div
-          role="alertdialog"
-          aria-modal="true"
-          aria-labelledby="age-verification-title"
-          className="modal-overlay"
-          ref={ageVerificationModalRef}
-        >
-          <div className="modal-content responsive-box" role="document">
-            <h3 id="age-verification-title">
-              ¿SOS MAYOR DE EDAD?
-            </h3>
-            <p className="visually-hidden">
-              Para continuar, debe confirmar que es mayor de 18 años
-            </p>
-            <div role="group" aria-label="Verificación de edad" className="age-buttons">
-              <button
-                onClick={handleAgeYes}
-                type="button"
-                aria-label="Sí, soy mayor de 18 años"
-                className="btn-accept"
-                autoFocus
-              >
-                Sí
-              </button>
-              <button
-                onClick={handleAgeNo}
-                type="button"
-                aria-label="No, soy menor de 18 años"
-                className="btn-accept"
-              >
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Modal de restricción de edad - WCAG 2.4.3, 4.1.2 */}
-      {isAgeRestrictionModalOpen && (
-        <div
-          role="alertdialog"
-          aria-modal="true"
-          aria-labelledby="age-restriction-title"
-          aria-describedby="age-restriction-description"
-          aria-live="assertive"
-          className="modal-overlay"
-          ref={ageRestrictionModalRef}
-        >
-          <div className="modal-content" role="document">
-            <h2 id="age-restriction-title">
-              LO SENTIMOS,
-            </h2>
-            <p id="age-restriction-description">
-              <strong>Solo pueden participar mayores de 18 años</strong>
-            </p>
           </div>
         </div>
       )}
