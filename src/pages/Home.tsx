@@ -117,7 +117,7 @@ const Home = () => {
                 </div>
               </div>
               <p>
-                <strong>Comprá {getPriceByCountry()}</strong> en <br/> productos Tosh
+                <strong>Comprá {getPriceByCountry()}</strong> en <br/> productos Tosh.
               </p>
             </li>
             <li>
@@ -127,7 +127,7 @@ const Home = () => {
                 </div>
               </div>
               <p>
-                <strong>Registrá</strong>tus datos <br/> y tus facturas
+                <strong>Registrá</strong>tus datos <br/> y tus facturas.
               </p>
             </li>
             <li>
@@ -137,7 +137,9 @@ const Home = () => {
                 </div>
               </div>
               <p>
-                Participá por 1 de nuestras <strong>4 Scooters Xiaomi</strong>
+                Participá por 1 de nuestras <strong>4 Xiaomi Electric Scooter 4 Lite</strong>.
+                <br/>
+                4 ganadores por país.
               </p>
             </li>
           </ol>
