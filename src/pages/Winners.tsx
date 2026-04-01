@@ -144,10 +144,6 @@ const Winners = () => {
                                                 className="winners-period"
                                             >
                                                 <div>
-                                                    {/* Título del período - WCAG 2.4.6 */}
-                                                    <p id={`period-heading-${index}`} className='title'>
-                                                        {periodLabel}
-                                                    </p>
 
                                                     {/* Lista de ganadores - WCAG 1.3.1 */}
                                                     <ul

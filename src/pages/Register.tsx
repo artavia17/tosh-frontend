@@ -1,16 +1,11 @@
 import ChickyLogo from '../assets/img/webp/tosh-logo.webp';
 import { useState, useEffect, useRef } from 'react';
 import GetInto from '../components/GetInto';
-import RegisterForm from '../components/RegisterForm';
-import { NavLink } from 'react-router-dom';
 import SEO from '../components/SEO';
 import GalletaImg from '../assets/img/png/galleta.png';
 import CerealImg from '../assets/img/png/cereal.png';
 import VasoImg from '../assets/img/png/vaso.png';
-import { useAuth } from '../context/AuthContext';
-
 const Register = () => {
-    const { isAuthenticated } = useAuth();
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
     // Estados para verificación de edad
@@ -23,11 +18,6 @@ const Register = () => {
     // Referencias para modales
     const ageVerificationModalRef = useRef<HTMLDivElement>(null);
     const ageRestrictionModalRef = useRef<HTMLDivElement>(null);
-
-    // Handlers para modal de login
-    const handleOpenLoginModal = () => {
-        setIsLoginModalOpen(true);
-    };
 
     const handleLoginClose = () => {
         setIsLoginModalOpen(false);
@@ -140,21 +130,11 @@ const Register = () => {
             {/* WCAG 2.4.1 - Main landmark */}
             <main id="main-content" className='top-space register-page' role="main" aria-labelledby="register-heading">
                 <div className='responsive-box'>
-                    {/* Formulario para registrarse - WCAG 3.3.2 */}
-                    <h1 id="register-heading">REGISTRATE Y GANÁ</h1>
-
+                    {/* Sorteo finalizado */}
                     <section aria-labelledby="register-form-section" className='register-form-section'>
                         <h2 id="register-form-section" className="visually-hidden">
-                            Formulario de registro de usuario
+                            Sorteo finalizado
                         </h2>
-
-                        {/* WCAG 1.1.1 - Imagen descriptiva */}
-                        {/* <img
-                            src={CharacterImg}
-                            alt="Personaje de Lo bueno de cuidarte"
-                            loading="lazy"
-                            className="character-image"
-                        /> */}
 
                         {/* WCAG 1.1.1 - Logo descriptivo */}
                         <img
@@ -164,36 +144,16 @@ const Register = () => {
                             className="chicky-logo"
                         />
 
-                        {/* Componente de formulario de registro */}
-                        <RegisterForm />
+                        <h1 id="register-heading">EL SORTEO HA FINALIZADO</h1>
+                        <p style={{ textAlign: 'center', marginTop: '1rem' }}>
+                            Gracias por participar en la promoción.<br />
+                            El período de registro ha concluido.
+                        </p>
                     </section>
 
                     {/* WCAG 1.1.1 - Imagen decorativa */}
                     <div className="decorative-border " aria-hidden="true">
                     </div>
-
-                    {/* Ingresar facturas desde otra página - WCAG 2.4.6 */}
-                    <section aria-labelledby="already-have-account" className='already-have-account'>
-                        <h4 id="already-have-account">¿YA TENÉS CUENTA?</h4>
-                        {isAuthenticated ? (
-                            <NavLink
-                                to="/ingresar-codigos"
-                                aria-label="Ir a página de ingresar facturas"
-                                className='btn-code'
-                            >
-                                Ingresá facturas
-                            </NavLink>
-                        ) : (
-                            <button
-                                type="button"
-                                onClick={handleOpenLoginModal}
-                                aria-label="Abrir modal para iniciar sesión e ingresar facturas"
-                                className='btn-accept'
-                            >
-                                INGRESÁ FACTURAS
-                            </button>
-                        )}
-                    </section>
                 </div>
             </main>
 
